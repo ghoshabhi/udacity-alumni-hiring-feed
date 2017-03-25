@@ -28,45 +28,24 @@
 {% block content %}
   <hgroup>
     <h3>Login</h3>
+    {% if new_user %}
+      <p style="color:green;">Welcome, {{new_user}}! Login to continue!</p>
+    {% endif %}
+    {% if error %}
+      <p style="font-size:18px;color:red;">{{error}}</p>
+    {% endif %}
   </hgroup>
-  <form action="post">
-    <div class="row">
-      <div class="input-field col s6">
-         <input placeholder="Awesome" id="first_name" name="first_name" type="text">
-         <label for="first_name">First Name</label>
-       </div>
-       <div class="input-field col s6">
-         <input placeholder="Alumni" id="last_name" name="last_name" type="text">
-         <label for="last_name">Last Name</label>
-       </div>
-    </div>
+  <form method="post">
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="user@example.com" id="email" name="email" type="email">
+        <input placeholder="user@example.com" required="true" id="email" name="email" type="email">
         <label for="email">Email</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="Mountain View, California, US" id="location" name="location" type="text">
-        <label for="location">Location</label>
-      </div>
-    </div>
-    <div class="group">
-      <input type="checkbox" name="is_hiring" id="is_hiring"/>
-      <label for="is_hiring">Are you looking to hire ? </label>
-      <br/><br/>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="password" name="password" type="password">
+        <input id="password" name="password"  required="true" type="password">
         <label for="password">Password</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="confirm_password" name="verify_pass" type="password">
-        <label for="confirm_password">Confirm Password</label>
       </div>
     </div>
     <button class="btn waves-effect waves-light light-blue" type="submit">

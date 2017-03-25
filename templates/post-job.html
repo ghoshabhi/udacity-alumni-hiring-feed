@@ -1,0 +1,142 @@
+{% extends "master.html" %}
+{% block style %}
+  <style>
+  * { box-sizing:border-box; }
+
+  body {
+    font-family: Helvetica;
+    background: #eee;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  hgroup {
+    text-align:center;
+    margin-top: 4em;
+  }
+
+  form {
+    width: 580px;
+    margin: 4em auto;
+    padding: 3em 2em 2em 2em;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+  }
+  .error{
+    color: red;
+  }
+  </style>
+{% endblock %}
+{% block content %}
+  <hgroup>
+    <h3>Post A New Job</h3>
+    {% if error %}
+      <p class="error">{{error}}</p>
+    {% endif %}
+  </hgroup>
+  <label>Format</label>
+  <pre>
+    1) {company_name} | {job_title} | {location} | {job_url} | {attrs: REMOTE, INTERN, company_url}
+
+    OR
+
+    2) {company_name} | {job_title} | {location}
+  </pre>
+  <form method="post">
+    {% if error %}
+      {{error}}
+    {% endif %}
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="textarea1" required="true" class="materialize-textarea" name="job_posting"></textarea>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="input-field col s12">
+        <input
+            required="true"
+            placeholder="{{ user.location if user else Location}}"
+            id="location"
+            name="location"
+            type="text"
+          />
+        <label for="location">Location *</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          required="true"
+          placeholder="Full Stack Developer or Front End Developer"
+          id="job_url"
+          name="job_url"
+          type="text"
+        />
+        <label for="job_url">Job URL *</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          required="true"
+          placeholder="Add comma separated list: Python,JavaScript,React"
+          id="skills"
+          name="skills"
+          type="text"
+        />
+        <label for="skills">Skills Required *</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          required="true"
+          placeholder="0"
+          id="experience"
+          name="experience"
+          type="text"
+        />
+        <label for="experience">Experience Required (in Years) *</label>
+      </div>
+    </div>
+    <div class="group">
+      <input type="checkbox" name="is_internship" id="is_internship"/>
+      <label for="is_internship">Is this an Internship ? </label>
+      <br/><br/>
+    </div>
+    <div class="group">
+      <input type="checkbox" name="is_remote" id="is_remote"/>
+      <label for="is_remote">Is this a Remote Job ? </label>
+      <br/><br/>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+         <input
+            placeholder="Name"
+            required="true"
+            id="first_name"
+            name="name"
+            type="text"
+            value="{{ user.first_name + " " + user.last_name if user else '' }}"
+          />
+         <label for="name">Name (optional)</label>
+       </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+            placeholder="user@example.com"
+            id="email"
+            name="email"
+            type="email"
+            value="{{ user.email if user else '' }}"
+          />
+        <label for="email">Email (optional)</label>
+      </div>
+    </div> -->
+      <button class="btn waves-effect waves-light light-blue" type="submit">
+        Submit
+        <i class="material-icons right">send</i>
+      </button>
+  </form>
+{% endblock %}

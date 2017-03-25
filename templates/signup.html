@@ -1,0 +1,82 @@
+{% extends "master.html" %}
+{% block style %}
+  <style>
+  * { box-sizing:border-box; }
+
+  body {
+    font-family: Helvetica;
+    background: #eee;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  hgroup {
+    text-align:center;
+    margin-top: 4em;
+  }
+
+  form {
+    width: 480px;
+    margin: 4em auto;
+    padding: 3em 2em 2em 2em;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+  }
+  .error{
+    color: red;
+  }
+  </style>
+{% endblock %}
+{% block content %}
+  <hgroup>
+    <h3>Signup</h3>
+    {% if error %}
+      <p class="error">{{error}}</p>
+    {% endif %}
+  </hgroup>
+  <form method="post">
+    <div class="row">
+      <div class="input-field col s6">
+         <input placeholder="Awesome" required="true" id="first_name" name="first_name" type="text">
+         <label for="first_name">First Name</label>
+       </div>
+       <div class="input-field col s6">
+         <input placeholder="Alumni" required="true" id="last_name" name="last_name" type="text">
+         <label for="last_name">Last Name</label>
+       </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="user@example.com" required="true" id="email" name="email" type="email">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input required="true" placeholder="Mountain View, California, US" id="location" name="location" type="text">
+        <label for="location">Location</label>
+      </div>
+    </div>
+    <div class="group">
+      <input type="checkbox" name="is_hiring" id="is_hiring"/>
+      <label for="is_hiring">Are you looking to hire our Alumni ? </label>
+      <br/><br/>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" required="true" name="password" type="password">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="confirm_password" required="true" name="verify_pass" type="password">
+        <label for="confirm_password">Confirm Password</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light light-blue" type="submit">
+      Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+{% endblock %}
